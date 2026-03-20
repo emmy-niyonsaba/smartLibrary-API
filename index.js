@@ -1,13 +1,19 @@
-
-
-
 import express from 'express';
+import cors from 'cors';
+import userRoutes from './routers/userRouters.js';
+
 const app = express();
+app.use(cors());
+app.use(express.json());
+
+
+app.use('/api', userRoutes);
+
 
 const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+app.get('/health', (req, res) => {
+  res.status(200).send('App is Learning ');
 });
 
 app.listen(port, () => {

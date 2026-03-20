@@ -1,8 +1,7 @@
 
-const dotenv = require('dotenv');
+import * as dotenv from 'dotenv';
 dotenv.config();
-const { Pool } = require('pg');
-
+import { Pool } from 'pg';
  const pool = new Pool({
     host: process.env.PGHOST,
     database: process.env.PGDATABASE,
@@ -20,19 +19,14 @@ pool.connect()
 pool.on('error', (err) => {
     console.error('Unexpected error on idle client', err);
     process.exit(-1);
+})
+pool.on('connect', () => {
+    console.log('Database connection established');
 });
-pool.query('SELECT * FROM users', (err, res) => {
-    if (err) {
-        console.error('Error executing query', err.stack);
-    } else {
-        console.log('Query result:', res);
-    }
-});
+pool.on('remove', () => {
+    console.log('Database client removed');
+}); 
 
-pool.query('SELECT * FROM users', (err, res) => {
-    if (err) {
-        console.error('Error executing query', err.stack);  
-    } else {
-        console.log('Query result:', res.rows);
-    }   
-});
+
+export default pool;
+
