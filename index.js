@@ -19,3 +19,8 @@ app.get('/health', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+app.on('error', (err) => {
+    console.error('Server error:', err);
+}   );
+
+
