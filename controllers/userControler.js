@@ -33,6 +33,7 @@ export const createUser = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+// 
 export const updateUser = async (req, res) => {
     const userId = req.params.id;
     const { name, email, password } = req.body;

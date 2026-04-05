@@ -8,6 +8,7 @@ app.use(express.json());
 
 
 app.use('/api', userRoutes);
+app.use('/api', BookRoutes);
 
 
 const port = 3000;
