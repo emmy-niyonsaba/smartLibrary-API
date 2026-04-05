@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import userRoutes from './routers/userRouters.js';
+import { bookRouters,userRoutes } from './routers/index';
+
 
 const app = express();
 app.use(cors());
@@ -8,7 +9,7 @@ app.use(express.json());
 
 
 app.use('/api', userRoutes);
-app.use('/api', BookRoutes);
+app.use('/api',bookRouters);
 
 
 const port = 3000;
