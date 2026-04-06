@@ -1,5 +1,4 @@
-
-import Book from "../models/Book.js";
+import Book from "../modles/booksModel.js";
 
 export const createBook = async (req, res) => {
     try {
@@ -38,8 +37,7 @@ export const createBook = async (req, res) => {
 
         res.status(201).json({
             success: true,
-            message: "Book Is successfully",
-            data: book
+            message: "Book Is successfully Created"
         });
 
     } catch (error) {
@@ -125,8 +123,7 @@ export const updateBook = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: "Book updated successfully",
-            data: book
+            message: "Book updated successfully"
         });
 
     } catch (error) {
